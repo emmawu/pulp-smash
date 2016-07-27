@@ -19,10 +19,10 @@ from packaging.version import Version
 from pulp_smash import api, selectors, utils
 from pulp_smash.compat import urljoin
 from pulp_smash.constants import (
-    DRPM_FEED_URL,
+    DRPM_UNSIGNED_FEED_URL,
     REPOSITORY_PATH,
     RPM_FEED_URL,
-    SRPM_FEED_URL,
+    SRPM_UNSIGNED_FEED_URL,
 )
 from pulp_smash.tests.rpm.api_v2.utils import gen_repo
 from pulp_smash.tests.rpm.utils import set_up_module as setUpModule  # noqa pylint:disable=unused-import
@@ -112,7 +112,7 @@ class SyncDrpmRepoTestCase(SyncRepoBaseTestCase):
     @staticmethod
     def get_feed_url():
         """Return an DRPM repository feed URL."""
-        return DRPM_FEED_URL
+        return DRPM_UNSIGNED_FEED_URL
 
 
 class SyncSrpmRepoTestCase(SyncRepoBaseTestCase):
@@ -121,7 +121,7 @@ class SyncSrpmRepoTestCase(SyncRepoBaseTestCase):
     @staticmethod
     def get_feed_url():
         """Return an SRPM repository feed URL."""
-        return SRPM_FEED_URL
+        return SRPM_UNSIGNED_FEED_URL
 
 
 class SyncInvalidFeedTestCase(utils.BaseAPITestCase):

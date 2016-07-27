@@ -33,6 +33,8 @@ CONTENT_UPLOAD_PATH = '/pulp/api/v2/content/uploads/'
    http://docs.pulpproject.org/en/latest/dev-guide/integration/rest-api/content/upload.html#creating-an-upload-request
 """
 
+PULP_FIXTURES_URL = 'https://repos.fedorapeople.org/repos/pulp/pulp/fixtures/'
+
 DOCKER_IMAGE_URL = (
     'https://repos.fedorapeople.org/repos/pulp/pulp/fixtures/docker/'
     'busybox:latest.tar'
@@ -51,19 +53,33 @@ DOCKER_V2_FEED_URL = 'https://registry-1.docker.io'
 This URL can be used as the "feed" property of a Pulp Docker registry.
 """
 
-DRPM_FEED_URL = (
-    'https://repos.fedorapeople.org/repos/pulp/pulp/demo_repos/test_drpm_repo/'
+DRPM = 'drpms/test-alpha-1.1-1_1.1-2.noarch.drpm'
+"""The name of a DRPM file, relative to :data:`DRPM_FEED_URL`."""
+
+DRPM_FEED_URL = urljoin(
+    PULP_FIXTURES_URL,
+    'drpm-unsigned/'
 )
 """The URL to an DRPM repository."""
 
-DRPM = 'drpms/yum-3.4.3-10.fc16_3.4.3-11.fc16.noarch.drpm'
-"""The name of a DRPM file, relative to :data:`DRPM_FEED_URL`."""
+DRPM_UNSIGNED_FEED_URL = urljoin(
+    PULP_FIXTURES_URL,
+    'drpm-unsigned/'
+)
+"""The URL to an unsigned DRPM repository."""
 
 DRPM_URL = urljoin(DRPM_FEED_URL, DRPM)
 """The URL to a DRPM file.
 
 Built from :data:`DRPM_FEED_URL` and :data:`DRPM`.
 """
+
+DRPM_UNSIGNED_URL = urljoin(DRPM_UNSIGNED_FEED_URL, DRPM)
+"""The URL to a DRPM file.
+
+Built from :data:`DRPM_UNSIGNED_FEED_URL` and :data:`DRPM`.
+"""
+
 
 ERROR_KEYS = frozenset((
     '_href',
@@ -297,10 +313,29 @@ metadata/rpm
 SRPM = 'test-srpm02-1.0-1.src.rpm'
 """The name of an SRPM file at :data:`pulp_smash.constants.SRPM_FEED_URL`."""
 
-SRPM_FEED_URL = (
-    'https://repos.fedorapeople.org/repos/pulp/pulp/demo_repos/test_srpm_repo/'
+SRPM_FEED_URL = urljoin(
+    PULP_FIXTURES_URL,
+    'srpm/'
 )
 """The URL to an SRPM repository."""
+
+SRPM_UNSIGNED_FEED_URL = urljoin(
+    PULP_FIXTURES_URL,
+    'srpm-unsigned/'
+)
+"""The URL to an unsigned SRPM repository."""
+
+SRPM_URL = urljoin(SRPM_FEED_URL, SRPM)
+"""The URL to an SRPM file.
+
+Built from :data:`RPM_FEED_URL` and :data:`RPM`.
+"""
+
+SRPM_UNSIGNED_URL = urljoin(SRPM_UNSIGNED_FEED_URL, SRPM)
+"""The URL to an unsigned SRPM file.
+
+Built from :data:`SRPM_UNSIGNED_FEED_URL` and :data:`RPM`.
+"""
 
 USER_PATH = '/pulp/api/v2/users/'
 """See: `User APIs`_.

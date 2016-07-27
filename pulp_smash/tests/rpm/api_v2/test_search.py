@@ -27,7 +27,7 @@ from pulp_smash.constants import (
     RPM,
     RPM_FEED_URL,
     SRPM,
-    SRPM_FEED_URL,
+    SRPM_UNSIGNED_FEED_URL,
 )
 from pulp_smash.tests.rpm.api_v2.utils import gen_repo
 from pulp_smash.tests.rpm.utils import set_up_module as setUpModule  # noqa pylint:disable=unused-import
@@ -134,7 +134,7 @@ class SearchForSrpmTestCase(BaseSearchTestCase):
     @staticmethod
     def get_feed_url():
         """Return an RPM repository feed URL."""
-        return SRPM_FEED_URL
+        return SRPM_UNSIGNED_FEED_URL
 
     def test_search_for_all(self):
         """Search for all "srpm" units.
